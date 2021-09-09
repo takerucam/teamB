@@ -1,17 +1,18 @@
 import { GetStaticProps, NextPage } from 'next'
 import { client } from 'src/libs/client'
 import { ClientResponse, Property } from 'src/types/propertys'
+import { GoogleMaps } from 'src/components/GoogleMaps'
 
 type Props = {
   propertys: Property[]
 }
 
 const Index: NextPage<Props> = ({ propertys }) => {
-  console.log(propertys)
-
   return (
     <>
-      <div className="p-4 mx-3 text-red-500"></div>
+      <div>
+        <GoogleMaps />
+      </div>
     </>
   )
 }
