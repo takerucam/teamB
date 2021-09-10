@@ -6,12 +6,12 @@
 }
 
 .medium {
-    width: 343px;
+    min-width: 343px;
     height: 224px;
 }
 
 .large {
-    width: 343px;
+    min-width: 343px;
     height: 343px;
 }
 
