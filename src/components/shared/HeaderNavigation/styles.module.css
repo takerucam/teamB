@@ -1,0 +1,12 @@
+.header {
+    height: 44px;
+    border-bottom: 1px solid var(--font-white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--ui-primary-color);
+}
