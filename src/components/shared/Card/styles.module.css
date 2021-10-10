@@ -2,7 +2,8 @@
     position: relative;
     padding: 16px;
     border-radius: 8px;
-    background-color: var(--ui-primary-color);
+    background-color: rgba(0, 0, 0, 0.2);
+    background-blend-mode: darken;
 }
 
 .medium {

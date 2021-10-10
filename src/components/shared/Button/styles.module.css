@@ -1,0 +1,22 @@
+.base {
+    font-size: 12px;
+    padding: 4px 32px;
+    min-width: 84px;
+    border: 1px solid var(--font-white-color);
+    border-radius: 16px;
+}
+
+.fill {
+    background-color: var(--font-white-color);
+    color: var(--ui-primary-color);
+}
+
+.outlined {
+    background-color: var(--ui-primary-color);
+    color: var(--font-white-color);
+}
+
+.outlined:hover {
+    background-color: var(--font-white-color);
+    color: var(--ui-primary-color);
+}

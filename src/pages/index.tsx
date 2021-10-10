@@ -4,6 +4,7 @@ import { ClientResponse, Property } from 'src/types/propertys'
 import { GoogleMaps } from 'src/components/GoogleMaps'
 
 import { Card } from '../components/shared/Card'
+import { HeaderNavigation } from '../components/shared/HeaderNavigation'
 
 type Props = {
   propertys: Property[]
@@ -12,7 +13,8 @@ type Props = {
 const Index: NextPage<Props> = ({ propertys }) => {
   return (
     <>
-      <div>
+      <div className={'bg-primary'}>
+        <HeaderNavigation/>
         <GoogleMaps />
         <ul className={['flex', 'flex-nowrap', 'overflow-y-scroll', 'gap-5'].join(' ')}>
           <Card
