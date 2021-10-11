@@ -1,5 +1,6 @@
 import React from 'react'
 import { GoogleMap, LoadScript, useJsApiLoader } from '@react-google-maps/api'
+import { GoogleMapProps } from '@react-google-maps/api/dist/GoogleMap'
 
 interface GMapWindow extends Window {
   google: any
@@ -18,10 +19,10 @@ const center = {
   lng: 136.198836,
 }
 
-export const GoogleMaps = () => {
+export const GoogleMaps = ({ children, ...props }: GoogleMapProps) => {
   return (
     <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_MAP_KEY}>
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17}></GoogleMap>
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17} {...props}>{children}</GoogleMap>
     </LoadScript>
   )
 }
