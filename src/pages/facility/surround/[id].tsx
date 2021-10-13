@@ -13,7 +13,7 @@ const FacilityPage = ({ surrounding }): JSX.Element => {
   return (
     <div className='bg-primary min-h-screen'>
       <header className='h-60 relative'>
-        <Image src={surrounding.thumbnail.url} objectFit='cover' layout='fill' />
+        <Image src={surrounding.thumbnail.url} objectFit='cover' layout='fill' alt={surrounding.Name}/>
         <Container>
           <div className='relative flex justify-between'>
             <Link href='/list'>
