@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import { client } from '../libs/client'
 import { ClientResponse, Property } from '../types/propertys'
@@ -19,7 +20,10 @@ const ListPage: NextPage<Props> = ({ propertys }): JSX.Element => {
 
   return (
     <div className={'bg-primary'}>
-      <HeaderNavigation/>
+      <HeaderNavigation />
+
+      <h2 className={['text-2xl', 'font-bold', 'text-white', 'text-center', 'mt-5'].join(' ')}>施設一覧</h2>
+
       <div className={['flex', 'mt-5'].join(' ')}>
         <ListNavigation
           onClick={() => setTab('surrounding')}
@@ -40,12 +44,18 @@ const ListPage: NextPage<Props> = ({ propertys }): JSX.Element => {
         <ul className={['grid', 'grid-cols-1', 'gap-5'].join(' ')}>
           {propertys[tab].map((property, index) => (
             <li key={`${property.id}-${index}`}>
-              <Card
-                size="large"
-                title={property.Name}
-                subtitle={property.Address}
-                thumbnailUrl={property?.thumbnail?.url}
-              />
+              <Link
+                href={tab === 'surrounding' ? `/facility/surround/${property.id}` : `/facility/property/${property.id}`}
+              >
+                <a>
+                  <Card
+                    size='large'
+                    title={property.Name}
+                    subtitle={property.Address}
+                    thumbnailUrl={property?.thumbnail?.url}
+                  />
+                </a>
+              </Link>
             </li>
           ))}
         </ul>
