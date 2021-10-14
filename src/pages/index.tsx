@@ -9,11 +9,9 @@ type Props = {
 
 const Index: NextPage<Props> = ({ propertys }) => {
   return (
-    <>
-      <div>
-        <GoogleMaps />
-      </div>
-    </>
+    <div>
+      <GoogleMaps propertys={propertys} />
+    </div>
   )
 }
 

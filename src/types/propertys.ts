@@ -25,6 +25,7 @@ export type Property = TimeStaps & {
   Longitude: string
   BuildingType: string
   thumbnail: Image
+  Name: string
 }
 
 // microcmsからのレスポンス
@@ -33,4 +34,9 @@ export type ClientResponse = {
   totalcount: number
   offset: number
   limit: number
+}
+
+export type LatLng = {
+  lat: number
+  lng: number
 }
