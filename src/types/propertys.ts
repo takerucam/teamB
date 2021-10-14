@@ -24,8 +24,9 @@ export type Property = TimeStaps & {
   Latitude: string
   Longitude: string
   BuildingType: string
-  thumbnail: Image
   Name: string
+  Address: string
+  thumbnail: Image
 }
 
 // microcmsからのレスポンス
