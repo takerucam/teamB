@@ -36,3 +36,8 @@ export type ClientResponse = {
   offset: number
   limit: number
 }
+
+export type LatLng = {
+  lat: number
+  lng: number
+}
