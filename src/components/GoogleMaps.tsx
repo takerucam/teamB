@@ -29,9 +29,11 @@ const markerStyle = {
 export const GoogleMaps: React.VFC<Props> = ({ propertys }) => {
   const { data, error } = useSWR(`http://localhost:3000/api/routes/鯖江駅`, fetcher)
 
+  // console.log(propertys)
+
   data
     ? data.map((d) => {
-        console.log(d.legs[0].steps)
+        // console.log(d.legs[0].steps)
         return (
           <div key={d.duraition}>
             {/* {console.log(Number(d.legs[0].duration.text.replace('分', '')))} */}
