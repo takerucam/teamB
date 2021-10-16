@@ -19,12 +19,20 @@ const Index: NextPage<Props> = ({ propertys }) => {
         <ul className={['flex', 'flex-nowrap', 'overflow-y-scroll', 'gap-5'].join(' ')}>
           <Card
             title="メガネ会館"
-            subtitle="鯖江市"
+            subtitle="福井県鯖江市新横江2丁目3-4"
             thumbnailUrl="https://www.megane.gr.jp/museum/main/wp-content/uploads/img01.jpg"
           />
-          <Card />
-          <Card />
-          <Card />
+          {propertys.map((property: Property) => {
+            return (
+              <div key={property.id}>
+                <Card
+                  title={property.Name}
+                  subtitle={property.Address}
+                  thumbnailUrl={property.thumbnail.url}
+                />
+              </div>
+            )
+          })}
         </ul>
       </div>
     </>
