@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next'
 import { client } from 'src/libs/client'
-import { ClientResponse, Property } from 'src/types/propertys'
+import { ClientResponse, Property, Surrounding } from 'src/types/propertys'
 import { GoogleMaps } from 'src/components/GoogleMaps'
 import Link from 'next/link'
 
@@ -9,20 +9,31 @@ import { HeaderNavigation } from '../components/shared/HeaderNavigation'
 
 type Props = {
   propertys: Property[]
+  surrounding: Surrounding[]
 }
 
-const Index: NextPage<Props> = ({ propertys }) => {
+const Index: NextPage<Props> = ({ propertys, surrounding }) => {
   return (
     <>
       <div className={'bg-primary'}>
         <HeaderNavigation />
         <GoogleMaps propertys={propertys} />
         <ul className={['flex', 'flex-nowrap', 'overflow-y-scroll', 'gap-5'].join(' ')}>
-          <Card
-            title="メガネ会館"
-            subtitle="福井県鯖江市新横江2丁目3-4"
-            thumbnailUrl="https://www.megane.gr.jp/museum/main/wp-content/uploads/img01.jpg"
-          />
+          {surrounding.map((surrounding: Surrounding) => {
+            return (
+              <div key={surrounding.id}>
+                <Link href={`/facility/surround/${surrounding.id}`}>
+                  <a>
+                    <Card
+                      title={surrounding.Name}
+                      subtitle={surrounding.Address}
+                      thumbnailUrl={surrounding.thumbnail.url}
+                    />
+                  </a>
+                </Link>
+              </div>
+            )
+          })}
           {propertys.map((property: Property) => {
             return (
               <div key={property.id}>
@@ -45,10 +56,12 @@ const Index: NextPage<Props> = ({ propertys }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await client.get<ClientResponse>({ endpoint: 'property' })
+  const properties = await client.get<ClientResponse>({ endpoint: 'property' })
+  const surrounding = await client.get<ClientResponse>({ endpoint: 'surroundingbuildings' })
   return {
     props: {
-      propertys: data.contents,
+      propertys: properties.contents,
+      surrounding: surrounding.contents,
     },
   }
 }
