@@ -2,6 +2,7 @@ import { GetStaticProps, NextPage } from 'next'
 import { client } from 'src/libs/client'
 import { ClientResponse, Property } from 'src/types/propertys'
 import { GoogleMaps } from 'src/components/GoogleMaps'
+import Link from 'next/link'
 
 import { Card } from '../components/shared/Card'
 import { HeaderNavigation } from '../components/shared/HeaderNavigation'
@@ -25,11 +26,15 @@ const Index: NextPage<Props> = ({ propertys }) => {
           {propertys.map((property: Property) => {
             return (
               <div key={property.id}>
-                <Card
-                  title={property.Name}
-                  subtitle={property.Address}
-                  thumbnailUrl={property.thumbnail.url}
-                />
+                <Link href={`/facility/property/${property.id}`}>
+                  <a>
+                    <Card
+                      title={property.Name}
+                      subtitle={property.Address}
+                      thumbnailUrl={property.thumbnail.url}
+                    />
+                  </a>
+                </Link>
               </div>
             )
           })}
