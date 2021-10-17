@@ -1,6 +1,7 @@
 import { InfoWindow } from '@react-google-maps/api'
 import { useTime } from 'src/hooks/useTime'
 import { Property } from 'src/types/propertys'
+import Link from 'next/link'
 
 type Props = {
   property: Property
@@ -15,9 +16,7 @@ export const MarkerContainer: React.VFC<Props> = ({ property }) => {
 
   return data ? (
     <InfoWindow position={{ lat: Number(Latitude), lng: Number(Longitude) }}>
-      <div>
-        <h1>{data[0].legs[0].duration.text}</h1>
-      </div>
+      <h1>徒歩{data[0].legs[0].duration.text}</h1>
     </InfoWindow>
   ) : null
 }

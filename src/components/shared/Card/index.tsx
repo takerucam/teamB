@@ -10,22 +10,21 @@ export interface CardProps extends ComponentPropsWithRef<'div'> {
   thumbnailUrl?: string
 }
 
-export const Card = (
-  {
-    className,
-    size = 'medium',
-    title = '物件名',
-    subtitle = '住所',
-    thumbnailUrl = '',
-    ...props
-  }: CardProps): JSX.Element => {
+export const Card = ({
+  className,
+  size = 'medium',
+  title = '物件名',
+  subtitle = '住所',
+  thumbnailUrl = '',
+  ...props
+}: CardProps): JSX.Element => {
   return (
     <div
       className={[styles.base, styles[size], className].join(' ')}
       style={{
         backgroundImage: `url(${thumbnailUrl})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
       }}
       {...props}
     >
