@@ -9,17 +9,17 @@ import { HeaderNavigation } from '../components/shared/HeaderNavigation'
 
 type Props = {
   propertys: Property[]
-  surrounding: Surrounding[]
+  surroundings: Surrounding[]
 }
 
-const Index: NextPage<Props> = ({ propertys, surrounding }) => {
+const Index: NextPage<Props> = ({ propertys, surroundings }) => {
   return (
     <>
       <div className={'bg-primary'}>
         <HeaderNavigation />
         <GoogleMaps propertys={propertys} />
         <ul className={['flex', 'flex-nowrap', 'overflow-y-scroll', 'gap-5'].join(' ')}>
-          {surrounding.map((surrounding: Surrounding) => {
+          {surroundings.map((surrounding: Surrounding) => {
             return (
               <div key={surrounding.id}>
                 <Link href={`/facility/surround/${surrounding.id}`}>
@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       propertys: properties.contents,
-      surrounding: surrounding.contents,
+      surroundings: surrounding.contents,
     },
   }
 }
