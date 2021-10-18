@@ -29,6 +29,16 @@ export type Property = TimeStaps & {
   thumbnail: Image
 }
 
+// 周辺建物データ
+export type Surrounding = TimeStaps & {
+  Latitude: string
+  Longitude: string
+  Name: string
+  StoreType: string
+  Address: string
+  thumbnail: Image
+}
+
 // microcmsからのレスポンス
 export type ClientResponse = {
   contents: Property[]
